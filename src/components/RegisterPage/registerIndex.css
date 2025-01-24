@@ -1,0 +1,195 @@
+.total-con {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #3e3232;
+    padding: 20px;
+}
+
+.register-head {
+    color: #e76e10;
+    font-size: 33px;
+    font-style: italic;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: underline;
+    margin-bottom: 30px;
+}
+
+.login-card {
+    background-color: #ffffff;
+    padding: 30px;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.input-con {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.input-ele {
+    width: 100%;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    height: 40px;
+    padding: 8px 12px;
+    margin-top: 8px;
+    font-size: 14px;
+    box-sizing: border-box;
+    transition: border-color 0.2s;
+}
+
+.input-ele:focus {
+    border-color: #e76e10;
+    outline: none;
+}
+
+.login-button {
+    background-color: #1a43bf;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 24px;
+    width: 100%;
+    max-width: 200px;
+    margin-top: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.login-button:hover {
+    background-color: #153399;
+}
+
+.link-item {
+    margin: 16px;
+    color: #1a43bf;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.label-ele {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 4px;
+    display: block;
+}
+
+.span-ele {
+    font-size: 20px;
+    color: #e76e10;
+}
+
+.login-form-head {
+    color: #333;
+    margin-bottom: 30px;
+    font-size: 24px;
+    text-align: center;
+}
+
+.res-para1 {
+    font-size: 16px;
+    color: rgb(45, 210, 45);
+    margin-top: 16px;
+    text-align: center;
+}
+
+.res-para2 {
+    font-size: 16px;
+    color: rgb(226, 11, 11);
+    margin-top: 16px;
+    text-align: center;
+}
+
+/* Media Queries */
+@media screen and (min-width:400px){
+    .reg-log{
+        display:flex;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .register-head {
+        font-size: 30px;
+    }
+
+    .login-form-head {
+        font-size: 22px;
+    }
+
+    .span-ele {
+        font-size: 18px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .total-con {
+        padding: 15px;
+    }
+
+    .register-head {
+        font-size: 28px;
+        margin-bottom: 25px;
+    }
+
+    .login-card {
+        padding: 20px;
+        width: 90%;
+    }
+
+    .login-form-head {
+        font-size: 20px;
+    }
+
+    .input-ele {
+        height: 38px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .total-con {
+        padding: 10px;
+    }
+
+    .register-head {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+
+    .login-card {
+        padding: 15px;
+    }
+
+    .login-form-head {
+        font-size: 18px;
+        margin-bottom: 20px;
+    }
+
+    .span-ele {
+        font-size: 16px;
+    }
+
+    .input-ele {
+        height: 36px;
+        font-size: 13px;
+    }
+
+    .login-button {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+
+    .res-para1,
+    .res-para2 {
+        font-size: 14px;
+    }
+}

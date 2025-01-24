@@ -1,0 +1,263 @@
+.task-total-con {
+    background-color: rgb(238, 241, 245);
+    min-height: 100vh;
+    width: 100%;
+}
+
+.task-containers {
+    display: flex;
+    width: 100%;
+}
+
+.total-task-right-con {
+    flex: 1;
+    padding: 20px;
+}
+
+.task-top-right-con {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    margin-bottom: 20px;
+}
+
+.task-head {
+    color: #000000;
+    font-size: 20px;
+    margin: 0;
+}
+
+.task-button {
+    border: none;
+    background-color: blue;
+    border-radius: 8px;
+    padding: 8px 16px;
+    color: #ffffff;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.task-button:hover {
+    background-color: darkblue;
+}
+
+/* Status Cards Styling */
+.task-status-con {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.task-status-card {
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.task-status-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Task Items Styling */
+.task-items-con {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.task-items-card {
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 15px;
+    transition: transform 0.2s;
+}
+
+.task-items-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Task Card Elements */
+.task-card-dots {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.task-card-icon-con {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.task-card-head {
+    font-size: 16px;
+    margin: 0;
+    display: flex;
+    align-items: center;
+}
+
+/* Status Colors */
+.todo-status-color,
+.inProgress-status-color,
+.completed-status-color {
+    height: 10px;
+    width: 10px;
+    border-radius: 50%;
+    margin: 0;
+}
+
+.todo-status-color { background-color: blue; }
+.inProgress-status-color { background-color: rgb(233, 189, 14); }
+.completed-status-color { background-color: rgba(9, 136, 19, 0.795); }
+
+/* Popup Styling */
+.popup-container {
+    background-color: #ffffff;
+    width: 90%;
+    max-width: 500px;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.tigger-head {
+    font-size: 20px;
+    margin: 0 0 20px 0;
+}
+
+.tigger-input-con {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.trigger-input-con-ele {
+    flex: 1;
+    min-width: 200px;
+}
+
+.trigger-input-ele {
+    width: 100%;
+    padding: 8px;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    margin: 5px 0;
+}
+
+.trigger-label-ele {
+    font-size: 14px;
+    color: #333;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.trigger-button-con {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+/* Dots Menu Styling */
+.task-dots-card {
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    min-width: 150px;
+}
+
+.dup-con {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px;
+    cursor: pointer;
+}
+
+.dup-con:hover {
+    background-color: #f5f5f5;
+    border-radius: 4px;
+}
+
+/* Media Queries */
+@media screen and (max-width: 1024px) {
+    .task-items-con {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .task-containers {
+        flex-direction: column;
+    }
+
+    .total-task-right-con {
+        padding: 10px;
+    }
+
+    .task-status-con {
+        padding: 10px;
+        gap: 15px;
+    }
+
+    .task-items-con {
+        padding: 10px;
+        gap: 15px;
+    }
+
+    .task-card-head {
+        font-size: 14px;
+    }
+
+    .popup-container {
+        padding: 15px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .task-top-right-con {
+        flex-direction: column;
+        gap: 15px;
+        align-items: stretch;
+        padding: 10px;
+    }
+
+    .task-button {
+        width: 100%;
+    }
+
+    .task-status-con {
+        grid-template-columns: 1fr;
+    }
+
+    .tigger-input-con {
+        flex-direction: column;
+    }
+
+    .trigger-input-con-ele {
+        width: 100%;
+    }
+
+    .trigger-button-con {
+        flex-direction: column;
+    }
+
+    .task-trigger-button,
+    .submit-trigger-button {
+        width: 100%;
+        margin: 5px 0;
+    }
+}

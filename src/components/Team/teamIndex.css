@@ -1,0 +1,122 @@
+.total-team-right-con{
+    flex: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+.team-popup-container{
+    background-color:#ffffff;
+    box-shadow:0 2px 8px rgba(0,0,0,0.1);
+    width:90%;
+    max-width:500px;
+    min-height:300px;
+    border-radius:12px;
+    padding:20px;
+    margin:0 auto;
+}
+.team-card{
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    padding:15px;
+    border-radius:8px;
+    width:90%;
+    max-width:380px;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    margin:10px;
+    transition: transform 0.2s;
+}
+.team-card:hover{
+    transform: translateY(-5px);
+}
+.team-head{
+    color:#000000;
+    font-size:16px;
+    margin:5px;
+    display:flex;
+    align-items: center;
+}
+.team-card-item{
+    display:flex;
+    align-items: center;
+    gap:8px;
+}
+.team-card-icon{
+    height:20px;
+    width:20px;
+    color:#666;
+}
+.team-card-icon2{
+    height:26px;
+    width:26px;
+    color:blue;
+}
+.total-team-cards{
+    display:grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap:20px;
+    padding:20px;
+    justify-items:center;
+}
+/* Media Queries */
+@media screen and (max-width: 1024px) {
+    .team-card {
+        max-width: 350px;
+        margin:10px;
+    }
+
+    .team-head {
+        font-size: 15px;
+    }
+}
+@media screen and (max-width: 768px) {
+    .total-team-right-con {
+        padding: 10px;
+    }
+
+    .total-team-cards {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 15px;
+        padding: 10px;
+    }
+
+    .team-card {
+        padding: 12px;
+        margin: 5px;
+    }
+
+    .team-popup-container {
+        padding: 15px;
+    }
+}
+@media screen and (max-width: 480px) {
+    .total-team-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .team-card {
+        max-width: 100%;
+        margin:4px;
+    }
+
+    .team-head {
+        font-size: 14px;
+    }
+
+    .team-popup-container {
+        width: 95%;
+        padding: 12px;
+    }
+
+    .trigger-button-con {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .task-trigger-button,
+    .submit-trigger-button {
+        width: 100%;
+        margin: 0;
+    }
+}
