@@ -8,7 +8,7 @@ const DashboardHeader=()=>{
     return(
         <SelectContext.Consumer>
             {value=>{
-                const {selectedTask,toggleTask}=value
+                const {toggleTask}=value
                 return(
                     <nav className='nav-con'>
                         <div className='nav-left'>

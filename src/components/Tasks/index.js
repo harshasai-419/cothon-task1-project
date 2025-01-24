@@ -12,9 +12,10 @@ import { IoPeopleCircleSharp } from "react-icons/io5";
 import { MdOutlineCalendarMonth } from "react-icons/md";
 import {Navigate} from 'react-router-dom'
 import Cookies from 'js-cookie'
+import {BounceLoader } from 'react-spinners';
 
 class Tasks extends Component{
-    state={taskList:[{id:0,priority:'High',title:'dev',date:'29-01-2024',teamName:'bhaskar',status:'ToDo'}],title:'',teamName:'',date:'',priority:'',status:''}
+    state={taskList:[{id:0,priority:'High',title:'dev',date:'29-01-2024',teamName:'bhaskar',status:'ToDo',isLoading:true}],title:'',teamName:'',date:'',priority:'',status:'',isLoading:true}
 
     changeTitle=(event)=>{
         this.setState({title:event.target.value})
@@ -49,7 +50,7 @@ class Tasks extends Component{
                 }
                 const response = await fetch(url,options)
                 const data=await response.json()
-                this.setState({taskList:data})
+                this.setState({taskList:data,isLoading:false})
                 // console.log(data)
     }
     editItems=async (id)=>{
@@ -90,7 +91,7 @@ class Tasks extends Component{
         const response = await fetch(url,options)
         const data=await response.json()
         console.log(data)
-        this.setState({taskList:data})
+        this.setState({taskList:data,isLoading:false})
     }
    
     duplicateTask=async (taskId)=>{
@@ -132,7 +133,7 @@ class Tasks extends Component{
             return <Navigate to="/login" replace/>
         }
         const {select}=this.props;
-        const {taskList,title,teamName,date,priority,status}=this.state
+        const {taskList,title,teamName,date,priority,status,isLoading}=this.state
         console.log(title)
         console.log(status)
         return(
@@ -141,6 +142,11 @@ class Tasks extends Component{
                 <DashboardHeader/> 
                 <div className='task-containers'>
                     <DashboardLeftcon select={select}/>
+                    {isLoading?(
+                        <div className='loader-con'>
+                            <BounceLoader color="#36d7b7" loading={true} size={40} />
+                        </div>
+                    ):
                     <div className='total-task-right-con'>
                             <div className='task-top-right-con'>
                                 <h1 className='task-head'>Tasks</h1>
@@ -349,7 +355,7 @@ class Tasks extends Component{
                             </div>
                         </div>
 
-                    </div>           
+                    </div>   }   
                     
                 </div>
             </div>

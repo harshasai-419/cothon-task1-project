@@ -8,9 +8,10 @@ import { IoPersonCircle } from "react-icons/io5";
 import { IoPeopleCircleSharp } from "react-icons/io5";
 import {Navigate} from 'react-router-dom'
 import Cookies from 'js-cookie'
+import {BounceLoader } from 'react-spinners';
 
 class Team extends Component{
-    state={teamList:[{teamName:'sample',teamLead:'sai'},],teamName:'',teamLead:''}
+    state={teamList:[{teamName:'sample',teamLead:'sai'},],teamName:'',teamLead:'',isLoading:true}
 
     componentDidMount(){
         this.getTeams()
@@ -50,19 +51,24 @@ class Team extends Component{
         }
         const response = await fetch(url,options)
         const data=await response.json()
-        this.setState({teamList:data})
+        this.setState({teamList:data,isLoading:false})
     }
     render(){
         if(Cookies.get("jwt_token")===undefined){
             return <Navigate to="/login" replace/>
         }
         const {select}=this.props
-        const {teamList,teamName,teamLead}=this.state
+        const {teamList,teamName,teamLead,isLoading}=this.state
         return(
             <div className='task-total-con'> 
                 <DashboardHeader/> 
                 <div className='task-containers'>
                     <DashboardLeftcon select={select}/>
+                    {isLoading?(
+                        <div className='loader-con'>
+                            <BounceLoader color="#36d7b7" loading={true} size={40} />
+                        </div>
+                    ):
                     <div className='total-team-right-con'>
                          <div className='task-top-right-con'>
                             <h1 className='task-head'>Teams</h1>
@@ -115,7 +121,7 @@ class Team extends Component{
                                 )
                             })}
                         </div>
-                    </div>
+                    </div>}
                 </div>
             </div>
         )

@@ -8,9 +8,10 @@ import { PiSubtitlesFill } from "react-icons/pi";
 import { IoPeopleCircleSharp } from "react-icons/io5";
 import {Navigate} from 'react-router-dom'
 import Cookies from 'js-cookie'
+import {BounceLoader } from 'react-spinners';
 
 class Inprogress extends Component{
-    state={inprogressList:[{id:0,priority:'High',title:'dev',date:'29-01-2024',teamName:'bhaskar',status:'InProgress'}]}
+    state={inprogressList:[{id:0,priority:'High',title:'dev',date:'29-01-2024',teamName:'bhaskar',status:'InProgress'}],isLoading:true}
     componentDidMount(){
         this.getInprogressTasks()
     }
@@ -25,19 +26,24 @@ class Inprogress extends Component{
         const response = await fetch(url,options)
         const data=await response.json()
         // console.log(data)
-        this.setState({inprogressList:data})
+        this.setState({inprogressList:data,isLoading:false})
     }
     render(){
         if(Cookies.get("jwt_token")===undefined){
             return <Navigate to="/login" replace/>
         }
         const {select}=this.props
-        const {inprogressList}=this.state
+        const {inprogressList,isLoading}=this.state
         return(
             <div className='task-total-con'> 
                 <DashboardHeader/> 
                 <div className='task-containers'>
                     <DashboardLeftcon select={select}/>
+                    {isLoading?(
+                        <div className='loader-con'>
+                            <BounceLoader color="#36d7b7" loading={true} size={40} />
+                        </div>
+                    ):
                     <div className='total-inprogress-right-con'>
                         {inprogressList.map(each=>{
                             return(
@@ -65,7 +71,7 @@ class Inprogress extends Component{
                                 </div>
                             )
                         })}
-                    </div>
+                    </div>}
                 </div> 
             </div>
         )

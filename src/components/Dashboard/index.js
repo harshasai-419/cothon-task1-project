@@ -8,6 +8,7 @@ import { GiProgression } from "react-icons/gi";
 import { LuListTodo } from "react-icons/lu";
 import {Navigate} from 'react-router-dom'
 import Cookies from 'js-cookie'
+import {BounceLoader } from 'react-spinners';
 
 import {
     BarChart,
@@ -19,7 +20,7 @@ import {
   } from "recharts"
 
 class Dashboard extends Component{
-    state={data:[],totalTask:0,completed:0,inProgress:0,toDo:0}
+    state={data:[],totalTask:0,completed:0,inProgress:0,toDo:0,isLoading:true}
 
     componentDidMount(){
         this.getCount()
@@ -35,7 +36,7 @@ class Dashboard extends Component{
         }
         const response = await fetch(url,options)
         const data1=await response.json()
-        this.setState({data:data1})
+        this.setState({data:data1,isLoading:false})
         
     }
     getStatus=async ()=>{
@@ -62,20 +63,24 @@ class Dashboard extends Component{
                 td=item.count
             }
         }
-        this.setState({totalTask:totalCount,completed:com,inProgress:inp,toDo:td})
+        this.setState({totalTask:totalCount,completed:com,inProgress:inp,toDo:td,isLoading:false})
     }
     render(){
         if(Cookies.get("jwt_token")===undefined){
             return <Navigate to="/login" replace/>
         }
         const {select}=this.props
-        const {data,totalTask,completed,inProgress,toDo}=this.state
+        const {data,totalTask,completed,inProgress,toDo,isLoading}=this.state
         return(
             <div className='dash-total-con'> 
                 <DashboardHeader/> 
                 <div className='dash-containers'>
                     <DashboardLeftcon select={select}/> 
-                    <div className='total-dash-right-con'>
+                    {isLoading?(
+                        <div className='loader-con'>
+                            <BounceLoader color="#36d7b7" loading={true} size={40} />
+                        </div>
+                    ):<div className='total-dash-right-con'>
                         <div className='dash-right-con'>
                             <div className='dash-card'>
                                 <div>
@@ -158,7 +163,7 @@ class Dashboard extends Component{
                                 </BarChart>
                             </ResponsiveContainer>
                         </div>
-                    </div>
+                    </div>}
                 </div>
 
             </div>

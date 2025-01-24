@@ -1,3 +1,10 @@
+.loader-con{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height:90vh;
+    width:75%;
+}
 .task-total-con {
     width: 100%;
     min-height: 100vh;

@@ -12,9 +12,10 @@ import { MdOutlineDelete } from "react-icons/md";
 import { MdRestore } from "react-icons/md";
 import {Navigate} from 'react-router-dom'
 import Cookies from 'js-cookie'
+import {BounceLoader } from 'react-spinners';
 
 class Trash extends Component{
-    state={trashList:[{id:0,priority:'High',title:'dev',date:'29-01-2024',teamName:'bhaskar',status:'InProgress'}]}
+    state={trashList:[{id:0,priority:'High',title:'dev',date:'29-01-2024',teamName:'bhaskar',status:'InProgress'}],isLoading:true}
     componentDidMount(){
         this.getTrash()
     }
@@ -29,7 +30,7 @@ class Trash extends Component{
         const response = await fetch(url,options)
         const data=await response.json()
         // console.log(data)
-        this.setState({trashList:data})
+        this.setState({trashList:data,isLoading:false})
     }
     restoreTask=async (trashId)=>{
         const url="https://cothon-task1-backend.onrender.com/restoreTask"
@@ -70,12 +71,17 @@ class Trash extends Component{
             return <Navigate to="/login" replace/>
         }
         const {select}=this.props
-        const {trashList}=this.state 
+        const {trashList,isLoading}=this.state 
         return(
             <div className='task-total-con'> 
                 <DashboardHeader/> 
                 <div className='task-containers'>
                     <DashboardLeftcon select={select}/>
+                    {isLoading?(
+                        <div className='loader-con'>
+                            <BounceLoader color="#36d7b7" loading={true} size={40} />
+                        </div>
+                    ):
                     <div className='total-trash-right-con'>
                         {trashList.map(each=>{
                                 return(
@@ -146,7 +152,7 @@ class Trash extends Component{
                                     </div>
                                 )
                             })}
-                    </div>
+                    </div>}
                 </div>
             </div>
         )

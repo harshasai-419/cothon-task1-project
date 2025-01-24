@@ -6,9 +6,10 @@ import { MdOutlineLowPriority } from "react-icons/md";
 import { MdOutlineCalendarMonth } from "react-icons/md";
 import { PiSubtitlesFill } from "react-icons/pi";
 import { IoPeopleCircleSharp } from "react-icons/io5";
+import {BounceLoader } from 'react-spinners';
 
 class Completed extends Component{
-    state={completedList:[{id:0,priority:'High',title:'dev',date:'29-01-2024',teamName:'bhaskar',status:'InProgress'}]}
+    state={completedList:[{id:0,priority:'High',title:'dev',date:'29-01-2024',teamName:'bhaskar',status:'InProgress'}],isLoading:true}
     componentDidMount(){
         this.getCompletedTasks()
     }
@@ -23,16 +24,21 @@ class Completed extends Component{
         const response = await fetch(url,options)
         const data=await response.json()
         // console.log(data)
-        this.setState({completedList:data})
+        this.setState({completedList:data,isLoading:false})
     }
     render(){
         const {select}=this.props
-        const {completedList}=this.state
+        const {completedList,isLoading}=this.state
         return(
             <div className='task-total-con'> 
                 <DashboardHeader/> 
                 <div className='task-containers'>
                     <DashboardLeftcon select={select}/>
+                    {isLoading?(
+                        <div className='loader-con'>
+                            <BounceLoader color="#36d7b7" loading={true} size={40} />
+                        </div>
+                    ):
                     <div className='total-complete-right-con'>
                         {completedList.map(each=>{
                             return(
@@ -60,7 +66,7 @@ class Completed extends Component{
                                 </div>
                             )
                         })}
-                    </div>
+                    </div>}
                 </div> 
             </div>
         )

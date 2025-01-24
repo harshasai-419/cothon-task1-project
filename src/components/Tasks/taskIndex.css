@@ -1,3 +1,10 @@
+.loader-con{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height:90vh;
+    width:75%;
+}
 .task-total-con {
     background-color: rgb(238, 241, 245);
     min-height: 100vh;
