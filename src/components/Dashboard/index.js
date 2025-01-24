@@ -65,9 +65,9 @@ class Dashboard extends Component{
         this.setState({totalTask:totalCount,completed:com,inProgress:inp,toDo:td})
     }
     render(){
-        // if(Cookies.get("jwt_token")===undefined){
-        //     return <Navigate to="/login" replace/>
-        // }
+        if(Cookies.get("jwt_token")===undefined){
+            return <Navigate to="/login" replace/>
+        }
         const {select}=this.props
         const {data,totalTask,completed,inProgress,toDo}=this.state
         return(
